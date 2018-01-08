@@ -3,6 +3,7 @@ $(document).ready( function(){
 	//La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
 	renderHighlightedRecipes(recipesArray);
   printNews();
+  renderActivities(activities);
 });
 //ocultar iconos
 $(".hidden").toggle(); 
@@ -31,18 +32,29 @@ function renderRecipe(recipe) {
 
   listRecipes.append("<h2 class='title-recipe'>" + 
     recipe.title + "</h2><p class='author-recipe'> " +
-    recipe.source.name + "</p><img class='recipe-image' src='" + 
-    recipe.source.url + "'/>")
-
-}
-
-
+    recipe.source.name + "</p><img class='recipe-image' src='img/recipes/320x350/" + 
+    recipe.name + ".jpg'/>");
+} 
 
 /*
 * Función que se encarga de imprimir todas las actividades
 */
 function renderActivities(activitiesArray) {
-	console.log('Activities: ', activitiesArray);
+	//console.log('Activities: ', activitiesArray);
+  for (var i = 0; i < activitiesArray.length; i++) {
+    if (activitiesArray.length > 0) {
+      $(".wrapper-message").hide();
+      for (var i = 0; i < activities.length; i++) {
+        $(".list-activities").append("<a href='#' class='item-activity'><span class='attribution'><span class='avatar'><img src='" + 
+        activities[i].userAvatar + "' class='image-avatar'></span><span class='meta'><span class='author'>" + 
+        activities[i].userName + "</span><span class='recipe'>" + 
+        activities[i].recipeName + "</span>" + 
+        activities[i].text + "<span class='location'>" + 
+        activities[i].place + "</span></span></span><div class='bg-image' style='background-image: url(" + 
+        activities[i].image + ")'></div></a>");
+      }
+    }
+  }
 }
 
 /*
@@ -53,6 +65,7 @@ function renderActivities(activitiesArray) {
 function renderActivity(recipe) {
 	
 }
+
 
 function printNews(){
   $(".callout-paragraph").text("NUEVAS RECETAS")
