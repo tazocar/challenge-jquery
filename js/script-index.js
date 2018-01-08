@@ -42,4 +42,4 @@ function renderActivity(recipe) {
 	
 }
 
-
+$(".callout-paragraph").text("NUEVAS RECETAS")
