@@ -2,7 +2,7 @@ $(document).ready( function(){
 
 	//La variable "recipesArray" esta declarada en el archivo "data/recipes.js"
 	renderHighlightedRecipes(recipesArray);
-
+  printNews();
 });
 //ocultar iconos
 $(".hidden").toggle(); 
@@ -11,7 +11,7 @@ $(".hidden").toggle();
 * marcado el atributo "highlighted" como TRUE
 */
 function renderHighlightedRecipes(recipesArray) {
-	console.log('Recipes: ', recipesArray);
+	// console.log('Recipes: ', recipesArray);
   for (var i = 0; i < recipesArray.length; i++) {
     if (recipesArray[i].highlighted == true) {
       renderRecipe(recipesArray[i]);
@@ -20,13 +20,20 @@ function renderHighlightedRecipes(recipesArray) {
 }
 
 /*
-* Función que se encarga de imprimir UNA recetas que tenga 
+* Función que se encarga de imprimir UNA receta que tenga 
 * marcado el atributo "highlighted" como TRUE
 * Aqui se tiene que crear el HTML que esta en el 
 * archivo "templates/templates-recipe.html"
 */
 function renderRecipe(recipe) {
-	console.log('Voy a imprimir la receta: ', recipe);
+	// console.log('Voy a imprimir la receta: ', recipe);
+  var listRecipes = $(".list-recipes");
+
+  listRecipes.append("<h2 class='title-recipe'>" + 
+    recipe.title + "</h2><p class='author-recipe'> " +
+    recipe.source.name + "</p><img class='recipe-image' src='" + 
+    recipe.source.url + "'/>")
+
 }
 
 
@@ -47,4 +54,6 @@ function renderActivity(recipe) {
 	
 }
 
-$(".callout-paragraph").text("NUEVAS RECETAS")
+function printNews(){
+  $(".callout-paragraph").text("NUEVAS RECETAS")
+}
